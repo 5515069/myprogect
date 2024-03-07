@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengyuan.liunao.mapper.OtherMapper">
+
+
+
+	<insert id="addBreed">
+		insert into breed(id,breed,kind)
+		values(#{id},#{breed},#{kind})
+	</insert>
+
+	<select id="getBreedsByKind1" resultType="com.zhengyuan.liunao.target.TargetBreed">
+		select * from breed where kind1=#{kind1}
+	</select>
+	
+	<select id="getAllBreeds" resultType="java.lang.String">
+		select breed from breed 
+	</select>
+	
+		<select id="getBreedsByKind2" resultType="com.zhengyuan.liunao.target.TargetBreed">
+		select * from breed where kind2=#{kind2}
+	</select>
+	
+	<select id="getbreedByBreed" resultType="com.zhengyuan.liunao.target.TargetBreed">
+		select * from breed where breed=#{breed}
+	</select>
+	
+	<select id="getBreeds" resultType="java.lang.String">
+		select breed from breed
+	</select>
+
+	<insert id="addoddsshpe">
+		insert into odds_shape(id,tradedate,hightimes,lowtimes,times,totaltimes,highodds,lowodds,totalodds,shape)
+		values(#{id},#{tradedate},#{hightimes},#{lowtimes},#{times},#{totaltimes},#{highodds},#{lowodds},#{totalodds},#{shape})
+	</insert>
+	
+	<insert id="addk5sum">
+		insert into d1sum(id,tradedate,k5sum)
+		values(#{id},#{tradedate},#{k5sum})
+	</insert>
+	
+		<select id="getSizeByTradedat" resultType="java.lang.Integer">
+		select k5sum from d1sum where tradedate=#{tradedate}
+	</select>
+	
+
+	
+	
+	    <update id="updateShpePrices">	
+		update shape_1
+		 <trim prefix="set" suffixOverrides=","> 
+			  <if test="topprice!=null">topprice=#{topprice},</if> 
+			  <if test="openinterest!=null">openinterest=#{openinterest},</if>   
+		 </trim>
+		WHERE id=#{id}
+	</update>
+	
+	<insert id="addploygaodi0">
+		insert into ploy_gaodi1(id,contract, topprice, topsite, hightouchsite, lowtouchsite, profitlevel)
+		values(#{id},#{contract},#{topprice},#{topsite},#{hightouchsite},#{lowtouchsite},#{profitlevel})
+	</insert>
+	
+		<select id="getGaoDis" resultType="com.zhengyuan.liunao.utils.GaoDiRecord">
+		select * from ploy_gaodi1
+	</select>
+	
+	
+	<select id="gettradetimesbyk5vix" resultType="java.lang.String">
+		select tradetime from k5_vix
+	</select>
+		
+	<insert id="updatek5vix">
+		update k5_vix
+		 <trim prefix="set" suffixOverrides=","> 
+			  <if test="totaltimes!=null">totaltimes=#{totaltimes},</if> 
+			  <if test="vix!=null">vix=#{vix},</if>   
+		 </trim>
+		WHERE tradetime=#{tradetime}
+	</insert>
+	
+	<select id="getacontrats" resultType="java.lang.String">
+		select DISTINCT contract from d1 where tradedate=#{tradedate} 
+	</select>
+	
+	 <update id="updateBreedsInitialPrice">	
+		update breed
+		 <trim prefix="set" suffixOverrides=","> 
+			  <if test="initialprice!=null">initialprice=#{initialprice},</if>  
+		 </trim>
+		WHERE breed=#{breed}
+	</update>
+	
+		<select id="getAllTargetBreeds" resultType="com.zhengyuan.liunao.target.TargetBreed">
+		select * from breed
+	</select>
+	
+		    <update id="updateBreedsIndexs">	
+		update breed
+		 <trim prefix="set" suffixOverrides=","> 
+			  <if test="indexs!=null">indexs=#{indexs},</if>    
+		 </trim>
+		WHERE breed=#{breed}
+	</update>
+	<update id="updateBreedsindexskind1">	
+		update breed
+		 <trim prefix="set" suffixOverrides=","> 
+			  <if test="indexskind1!=null">indexskind1=#{indexskind1},</if>    
+		 </trim>
+		WHERE breed=#{breed}
+	</update> 
+	
+</mapper>

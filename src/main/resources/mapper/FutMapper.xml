@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengyuan.liunao.mapper.FutMapper">
+
+
+<select id="getTarDealRecords" resultType="com.zhengyuan.liunao.target.TargetDealRecord">
+      select * from  ${breed}  
+    </select>
+
+<select id="getTartDealRecordsByContract" resultType="com.zhengyuan.liunao.target.TargetDealRecord">
+      select * from  ${breed} where contract=#{contract}  order  by id
+    </select>
+	<insert id="addFutForeach">
+		 insert into k1_al (id,contract,tradedate,tradetime,open,close,high,low,volume,openinterest) values
+		 <foreach collection="list" item="item" separator=",">
+		 (#{item.id},#{item.contract},#{item.tradedate},#{item.tradetime},#{item.open},#{item.close},
+		 #{item.high},#{item.low},#{item.volume},#{item.openinterest})
+		 </foreach> 
+	</insert>
+	
+	
+  	<insert id="addFut">
+		 insert ${table} (id,contract,tradedate,tradetime,open,close,high,low,volume,openinterest) values
+		 (#{id},#{contract},#{tradedate},#{tradetime},#{open},#{close},#{high},#{low},#{volume},#{openinterest}) 
+	</insert>  
+	
+	  <select id="getk1MaxId" resultType="java.lang.Integer">
+      select max(id) from  ${table}
+    </select>
+	
+	
+
+   <select id="getSize" resultType="java.lang.Integer">
+      select count(*) from  ${breed}
+    </select>
+    
+       <select id="getSizeByTradedat" resultType="java.lang.Integer">
+      select count(*) from  ${breed} where tradedate=#{tradedate}
+    </select>
+    	<delete id="deleteK5">
+	 	delete  from ${breedName} where 1=1;
+	</delete>
+    
+     <select id="getTradedate" resultType="java.lang.String">
+     select DISTINCT(tradedate)  from  d1 ORDER BY tradedate;
+    </select>
+    
+    <select id="getK5ById" resultType="com.zhengyuan.liunao.target.TargetDealRecord">
+      select * from  ${breed} where id=#{id}
+    </select>
+    
+    <select id="getTarK5RecordByTradedate" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from  ${breed}  where tradedate &gt;= #{tradedatestart} and tradedate &lt; #{tradedatestartend}
+    </select>
+     <select id="getTarK5RecordByTradedateandContract" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from  ${breed}  where  contract=#{contract}  and  tradedate &gt; #{tradedatestart}  and tradedate &lt;= #{tradedatestartend}  
+      order by  tradedate
+    </select>
+    
+       <select id="getAllD1" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from  ${breed}  
+    </select>
+    
+     <select id="getAllD1ByTradedate" resultType="com.zhengyuan.liunao.utils.K5Record">
+             select * from  ${breed} order by tradedate    
+    </select>
+    
+    
+        <select id="getD1ByContract" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from  ${breed}  where contract between #{contractstart} and #{contractend}
+    </select>
+    
+           <select id="getK5RecordsInitialPrice" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from  ${sqltable} where contract like #{breed} ORDER BY tradedate; 
+    </select>
+   <select id="getK5Records" resultType="com.zhengyuan.liunao.utils.K5Record">
+      select * from ${cycle} where contract like #{contract} and tradedate &gt;= #{startdate} 
+      and tradedate &lt;= #{enddate}  order by contract
+		 limit #{start},#{pagesize} 
+    </select>
+    
+       <select id="getK5Recordstotal" resultType="java.lang.Integer">
+      select count(id) from ${cycle} where contract like #{contract} and tradedate &gt;= #{startdate}
+       and tradedate &lt;= #{enddate}
+    </select>
+    <delete id="deletek1allbreedsdate">
+       delete from ${table} where 1=1;
+    </delete>
+    
+    <update id="createtable">	   
+CREATE TABLE ${table} (   
+  id int(11) NOT NULL COMMENT 'id',
+  contract varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '合约',
+  tradedate varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '交易时间',
+  tradetime varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '交易日期',
+  open double(30, 2) NULL DEFAULT NULL COMMENT '开仓价',
+  close double(30, 2) NULL DEFAULT NULL COMMENT '关仓价',
+  high double(30, 2) NULL DEFAULT NULL COMMENT '最高价',
+  low double(30, 2) NULL DEFAULT NULL COMMENT '最低价',
+  volume double(30, 2) NULL DEFAULT NULL COMMENT '成交量',
+  openinterest double(30, 2) NULL DEFAULT NULL COMMENT '持仓量',
+  PRIMARY KEY (id) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+	</update>  
+	 <update id="deletetable">	  
+    DROP TABLE ${table};  
+	</update>  
+	
+		
+	<insert id="tickdateAdd">
+insert into ${table}(id,contract,tradedate, tradetime, currentprice, bidprice, bidvolume, askprice, askvolume, volume, openinterest)
+values(#{id},#{contract},#{tradedate}, #{tradetime}, #{currentprice}, #{bidprice}, #{bidvolume}, 
+#{askprice}, #{askvolume}, #{volume}, #{openinterest})
+	</insert>
+	     <select id="getkdatesize" resultType="java.lang.Integer">
+      select count(*) from  ${table} where 1=1
+    </select>
+    
+    
+    <insert id="addfutforeach" parameterType="list">
+  insert into k1_ag (id,contract,tradedate,tradetime,open,close,high,low,volume,openinterest) values
+    <foreach collection="list" item="item" separator=",">
+        (#{item.id}, #{item.contract},#{item.TradingDay},#{item.UpdateTime},#{item.open},#{item.close},#{item.high},
+        #{item.low},#{item.Volume},#{item.OpenInterest})
+    </foreach>
+	</insert>
+    
+    
+    
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengyuan.liunao.mapper.ShapeMapper">
+
+
+
+	<insert id="addshape1">
+		insert into shape_1(id,contract,tradedate,tradetime,idsite,realsite,highlow)
+		values(#{id},#{contract},#{tradedate},#{tradetime},#{idsite},#{realsite},#{highlow})
+	</insert>
+
+ <select id="getTargetshape1" resultType="com.zhengyuan.liunao.target.TargetShape1">
+     select * from shape_1 order by tradedate
+    </select>
+     <select id="getTargetshape1orderbyid" resultType="com.zhengyuan.liunao.target.TargetShape1">
+     select * from shape_1 order by id
+    </select>
+    
+</mapper>

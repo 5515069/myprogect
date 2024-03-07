@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhengyuan.liunao.mapper.IndexsDealMapper">
+
+
+
+	<insert id="addIndexs">
+		insert into ${table}(tradedate,close,open,high,low,openinterest,risefall,type)
+		values(#{tradedate},#{close},#{open},#{high},#{low},#{openinterest},#{risefall},#{type})
+	</insert>
+  <select id="getIndex" resultType="com.zhengyuan.liunao.entity.EntIndexs">
+      select * from  indexs_composite
+    </select>
+    <select id="getIndexs" resultType="com.zhengyuan.liunao.target.TargetIndexs">
+     select i.tradedate as tradedate,i.open as open,i.close as close,i.high as high,i.low as low ,
+     i.openinterest as openinterest, c.year as year,c.season as season,c.month as month,c.week as 
+     week from ${breeds} i LEFT JOIN cycle c on i.tradedate=c.tradedate where i.type=#{type} ORDER BY i.tradedate
+    
+    </select>
+</mapper>

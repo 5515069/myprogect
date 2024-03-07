@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+   <link rel="stylesheet" href="/Sys/css/layui.css">
+<link rel="stylesheet" href="/Sys/css/sign.css">
+
+<link rel="stylesheet"
+	href="/Sys/js/css/modules/layui-icon-extend/iconfont.css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/Sys/css/font.css">
+<link rel="stylesheet" href="/Sys/css/xadmin.css">
+<script type="text/javascript"
+	src="/Sys/js/jquery-3.3.1.min.js"></script>
+<script src="/Sys/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/xadmin.js"></script>
+<script type="text/javascript" src = "/Sys/js/jquery.table2excel.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row">
+       
+
+
+<div class="layui-form-item">
+  <label class="layui-form-label">选择周期：</label>
+<div class="layui-input-inline layui-form" >
+    <select  lay-filter="cycle"> 
+      <option value="d1">日线</option>
+      <option value="h12">半日线</option>
+      <option value="k5">5分钟线</option>
+      <option value="k1">1分钟线</option>
+    </select>
+ </div>
+ 
+ <label class="layui-form-label" >选择品种：</label>
+  <div class="layui-input-inline layui-form">
+    <select  lay-filter="breed" id="breed">
+						<option value="0">所有期货品种</option>
+						<option value="a">黄豆一号</option>
+						<option value="ag">白银</option>
+						<option value="al">铝</option>
+						<option value="ao">氧化铝</option>
+						<option value="ap">苹果</option>
+						<option value="au">黄金</option>
+						<option value="b">黄豆2号</option>
+						<option value="bb">胶合板</option>
+						<option value="bc">国际铜</option>
+						<option value="br">合成橡胶</option>
+						<option value="bu">沥青</option>
+						<option value="c">玉米</option>
+						<option value="CF">棉花</option>
+						<option value="CJ">红枣</option>
+						<option value="cs">玉米淀粉</option>
+						<option value="cu">沪铜</option>
+						<option value="CY">棉纱</option>
+						<option value="eb">苯乙烯</option>
+						<option value="ec">欧线</option>
+						<option value="eg">乙二醇</option>
+						<option value="fb">纤维板</option>
+						<option value="FG">玻璃</option>
+						<option value="fu">燃油</option>
+						<option value="hc">热卷</option>
+						<option value="i">铁矿石</option>
+						<option value="j">焦炭</option>
+						<option value="jd">鸡蛋</option>
+						<option value="jm">焦煤</option>
+						<option value="JR">稻</option>
+						<option value="l">塑料</option>
+						<option value="lc">碳酸锂</option>
+						<option value="lh">生猪</option>
+						<option value="LR">晚籼</option>
+						<option value="lu">低硫燃油</option>
+						<option value="m">豆粕</option>
+						<option value="MA">甲醇</option>
+						<option value="ni">沪镍</option>
+						<option value="nr">20号胶</option>
+						<option value="OI">菜油</option>
+						<option value="p">棕榈油</option>
+						<option value="pb">沪铅</option>
+						<option value="PF">短纤</option>
+						<option value="pg">液化气</option>
+						<option value="PK">花生</option>
+						<option value="PM">普麦</option>
+						<option value="pp">pp</option>
+						<option value="PX">对二甲苯</option>
+						<option value="rb">螺纹钢</option>
+						<option value="RI">早籼</option>
+						<option value="RM">菜粕</option>
+						<option value="rr">梗米</option>
+						<option value="RS">菜籽</option>
+						<option value="ru">橡胶</option>
+						<option value="SA">纯碱</option>
+						<option value="sc">原油</option>
+						<option value="SF">硅铁</option>
+						<option value="SH">烧碱</option>
+						<option value="si">工业硅</option>
+						<option value="SM">锰硅</option>
+						<option value="sn">沪锡</option>
+						<option value="sp">纸浆</option>
+						<option value="SR">白糖</option>
+						<option value="ss">不锈钢</option>
+						<option value="TA">pta</option>
+						<option value="UR">尿素</option>
+						<option value="v">pvc</option>
+						<option value="WH">强麦</option>
+						<option value="wr">线材</option>
+						<option value="y">豆油</option>
+						<option value="ZC">动力煤</option>
+						<option value="zn">沪锌</option>
+    </select>
+  </div>
+  
+   
+  选择合约：
+  <div class="layui-inline">
+    <input class="layui-input" name="contract" id="contract" autocomplete="off">
+  </div>
+  <br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   开始时间：
+  <div class="layui-inline">
+    <input class="layui-input" name="startdate" id="startdate" autocomplete="off" value='20010101'>
+  </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+   结束时间：
+  <div class="layui-inline">
+    <input class="layui-input" name="enddate" id="enddate" autocomplete="off" value='20300101'>
+  </div>
+
+
+ 
+ 
+ 
+ <button class="layui-btn" data-type="reload" ><i class="layui-icon">&#xe615;</i></button>
+      </div>
+    
+      <xblock >
+        <button type="button" class="layui-btn layui-btn-primary" id="uploadExcel">批量导入</button>
+        <button type="button" class="layui-btn layui-btn-primary" onclick="exportTable()">批量导出</button>
+      </xblock>
+  <table id="test" lay-filter="test"></table>
+    </div>   
+    <script src="/js/klinedata.draw.js"></script>
+  </body>
+  
+  <script type="text/html" id="barDemo">
+ <a title="修改信息 "   onclick="claCouModi()" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a title="删除"  onclick="deleteStu()" href="javascript:;" lay-event="edit">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+</script>
+ 
+  <script > 
+  var documentWidth = $(document).width();
+  layui.use(['table','form'],function(){ 
+	  var cycle = "d1";
+	  var breed="0";
+	  var contract="";
+	  var type='未批改';
+	  var table = layui.table;
+      var form = layui.form; 
+      form.render();
+       form.on('select(cycle)',function(data){ 
+    	  cycle = data.value; 
+      })
+     
+      form.on('select(breed)',function(data){
+    	  breed = data.value;
+    	 
+      }) 
+  
+    
+      table.render({
+          elem: '#test'  //绑定table表格
+          ,id:'csInfo'
+          ,method:'post'
+          ,url: 'getkdata' //后台springmvc接收路径
+          ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+  	        layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+	      //,curr: 5 //设定初始在第 5 页
+	      ,groups: 1 //只显示 1 个连续页码
+	      ,first: true //不显示首页
+	      ,last: true //不显示尾页
+	      ,limit:10
+	      ,limits:[10,50,100,1000,5000,10000,50000,100000]
+	    }
+          ,cols: [
+        	  [
+             {type: 'checkbox',width:documentWidth*4/100} 
+              ,{field:'id',title:'id', width:documentWidth*10/100, sort: true}
+              ,{field:'contract',title:'合约', width:documentWidth*8/100,sort:true} 
+              ,{field:'tradedate',title:'交易日期', width:documentWidth*8/100,sort:true} 
+              ,{field:'tradetime',title:'交易时间', width:documentWidth*8/100,sort:true} 
+              ,{field:'open',title:'开盘价', width:documentWidth*8/100,sort:true} 
+              ,{field:'close',title:'收盘价', width:documentWidth*8/100,sort:true} 
+              ,{field:'high',title:'最高价', width:documentWidth*8/100,sort:true} 
+              ,{field:'low',title:'最低价', width:documentWidth*8/100,sort:true} 
+              ,{field:'volume',title:'成交量', width:documentWidth*8/100,sort:true} 
+              ,{field:'openinterest',title:'持仓量', width:documentWidth*8/100,sort:true}  
+              /* ,{field:'operation',edit: 'text',title:'操作',toolbar: '#barDemo'} */
+          ]
+        	  ]
+         ,where: {
+        	  key:{
+        		  cycle : cycle ,
+        		  breed: breed,
+        		  contract: contract,
+        		  startdate:document.getElementById('startdate').value,
+        		  enddate:document.getElementById('enddate').value
+        	  }
+          } 
+      });
+	 
+    
+      
+     
+	  var $ = layui.$, active = { 
+   		    reload: function(){
+   		      table.reload('csInfo', {
+   		        page: {
+   		          curr: 1 //重新从第 1 页开始
+   		        },
+   		    url:'getkdata'
+   		        ,where: {
+   		        	key:{
+   		        		cycle : cycle ,
+   		        		breed: breed,
+   		        		contract:document.getElementById('contract').value,
+   		        		startdate:document.getElementById('startdate').value,
+   		        		enddate:document.getElementById('enddate').value
+   	        	  }
+   		        }
+   		        ,method:'post'
+   		      });
+   		    }
+   		  };
+     
+     
+     
+   
+ 		  $('.layui-btn').on('click', function(){
+ 		    var type = $(this).data('type');
+ 		    active[type] ? active[type].call(this) : '';
+ 		  });
+     
+     
+ 		  
+ 		  
+ 		 
+	     		  
+ 		});
+  
+
+  
+  
+  
+  function claCouModi(){ 
+	  var num="";
+	  var coursename ="";
+	  layui.use('table',function(){
+		  var table = layui.table
+		  var checkStatus = table.checkStatus('csInfo');
+		  num = checkStatus.data[0].stuno;
+		  coursename = checkStatus.data[0].coursename;
+		  
+	  });
+	  layer.open({
+		  type: 2,
+          title: '修改页面',
+          skin: 'layui-layer-molv',
+          shadeClose: false,
+          shade: 0.8,
+          area:  ['700px', '450px'],
+          content: 'claCouModi?num='+num+"&coursename="+coursename,
+          end: function(){
+          	window.location.reload(); //刷新父页面
+          }
+	  });
+  }
+  
+  
+</script>  
+  
+</html>
