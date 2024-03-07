@@ -45,6 +45,7 @@ import retunInfo.returnBreedClosingDate;
 @RequestMapping("/Sys")
 @Api("FutrueDateDeal相关api")
 @Slf4j
+
 public class bollController {
 	static Random random = new Random();
 	@Autowired
